@@ -2,7 +2,7 @@ require 'rack'
 
 $install_id = File.read(".version")
 
-puts("GOVUK synthetic test app - #{$install_id}")
+puts("GOVUK synthetic test app canary - #{$install_id}")
 class RackApp
   def call(env)
     req = Rack::Request.new(env)
