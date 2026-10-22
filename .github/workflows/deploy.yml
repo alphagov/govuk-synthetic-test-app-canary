@@ -25,7 +25,7 @@ jobs:
   build-and-publish-image:
     if:
       (github.event_name == 'workflow_dispatch' && startsWith(github.event.release.tag_name, 'v')) ||
-      (github.event_name == 'release' && contains(join(fromJSON('["gov-uk-synthetic-test-app-canary", "govuk-ci"]')), github.actor))
+      (github.event_name == 'release' && contains(join(fromJSON('["gov-uk-synthetic-test-app-canary[bot]", "govuk-ci"]')), github.actor))
     name: Build and publish image
     uses: alphagov/govuk-infrastructure/.github/workflows/build-push-arm-image.yml@main
     with:
