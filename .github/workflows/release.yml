@@ -9,7 +9,9 @@ on:
 
 jobs:
   release:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' && contains(join(fromJSON('["gov-uk-synthetic-test-app-canary", "govuk-ci"]')), github.actor))
     name: Release
     uses: alphagov/govuk-infrastructure/.github/workflows/release.yml@main
     secrets:
